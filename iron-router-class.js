@@ -11,12 +11,14 @@ Router.route('/blog/new', function(){
 }, {name: 'blog.new'});
 
 Router.route('/blog/:_id', function() {
-  this.layout('Layout');
-  this.render('Article', {
+  this.layout('Layout', {
     data: function(){
       return Articles.findOne({_id: this.params._id});
     }
   });
+
+  this.render('Article', {})
+  
 }, {
   name: 'article.show'
 });

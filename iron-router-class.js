@@ -13,12 +13,19 @@ Router.route('/blog/new', function(){
 Router.route('/blog/:_id', function() {
   this.layout('Layout', {
     data: function(){
-      return Articles.findOne({_id: this.params._id});
+      return {
+        article: function() {
+          return Articles.findOne({_id: this.params._id});
+        },
+        comments: function() {
+          return Comments.find({article_id: this.params._id});
+        }
+      }
     }
   });
 
   this.render('Article', {})
-  
+
 }, {
   name: 'article.show'
 });

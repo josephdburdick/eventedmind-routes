@@ -8,11 +8,15 @@ Router.route('/', function () {
 Router.route('/blog/new', function(){
   this.layout('Layout');
   this.render('ArticleNew');
-});
+}, {name: 'blog.new'});
 
 Router.route('/blog/:_id', function() {
   this.layout('Layout');
-  this.render('Article');
+  this.render('Article', {
+    data: function(){
+      return Articles.findOne({_id: this.params._id});
+    }
+  });
 }, {
   name: 'article.show'
 });

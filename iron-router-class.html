@@ -23,7 +23,7 @@
 	<ul>
 		{{#each articles}}
 			<li>
-				<a href="{{pathFor 'article.show' query='q=search+string' hash='hashfrag'}}">{{title}}</a>
+				<a href="{{urlFor 'article.show' query='q=search+string' hash='hashfrag'}}">{{title}}</a>
 			</li>
 		{{/each}}
 	</ul>	
